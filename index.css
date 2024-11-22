@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+
+#game-container {
+  position: relative;
+  width: 800px;
+  height: 300px;
+  border-bottom: 1px dotted black;
+  overflow: hidden;
+}
+
+#game-dino {
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+  background: url('assets/player.png') no-repeat center/contain;
+}
+
+#game-obstacle {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background: url('assets/cactus.png') no-repeat center/contain;
+  animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+  from {
+    right: 0;
+  }
+  to {
+    right: 100vw;
+  }
+}
