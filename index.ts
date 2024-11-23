@@ -1,17 +1,21 @@
 const dino = document.getElementById("game-dino") as HTMLElement;
 const obstacles = document.querySelectorAll(".game-obstacle") as NodeListOf<HTMLElement>;
-
+const scoreElement = document.getElementById("score") as HTMLElement;
+const gameOverElement = document.getElementById("game-over") as HTMLElement;
 let position = 0;
 let isDinoJumping = false;
 let gameOver = false;
-
+let score = 0;
+let sound;
 const setIsDinoJumping = () => {
   if (isDinoJumping || gameOver) {
     return;
   }
 
   isDinoJumping = true;
-
+  sound = new Audio()
+  sound.src = "https://sound.peal.io/ps/audios/000/065/367/original/youtube_65367.mp3?1664577906";
+  sound.play();
   const noGravityYet = setInterval(() => {
     if (position >= 150) {
       clearInterval(noGravityYet);
@@ -20,6 +24,9 @@ const setIsDinoJumping = () => {
         if (position <= 0) {
           clearInterval(gravity);
           isDinoJumping = false;
+          scoreElement.style.color = "gray";
+          score += 1; 
+          scoreElement.textContent = score.toString();
         }
         position -= 5;
         dino.style.bottom = position + "px";
@@ -44,14 +51,14 @@ const hasGameEnded = () => {
       dino.style.animation = "none";
       dino.style.bottom = position + "px";
 
-      obstacle.style.animation = "none";
-      obstacle.style.right = getComputedStyle(obstacle).right;
-
-      document.body.removeEventListener("click", setIsDinoJumping);
-      document.removeEventListener("keydown", handleKeyPress);
-
-      alert("Game Over Loser");
+     obstacle.style.animation = "none";
+     obstacle.style.right = getComputedStyle(obstacle).right;
       gameOver = true;
+    obstacles.forEach(obstacle => obstacle.style.animationPlayState = 'paused');
+    dino.style.animationPlayState = 'paused';
+    document.getElementById("score-board").style.display = 'none';
+    gameOverElement.style.display = 'block';
+
     }
   });
 };

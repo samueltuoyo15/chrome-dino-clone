@@ -8,13 +8,21 @@ body {
   background-color: #f7f7f7;
 }
 
-
 #game-container {
   position: relative;
   width: 800px;
   height: 300px;
   border-bottom: 1px dotted black;
   overflow: hidden;
+}
+
+#score-board {
+  position: absolute;
+  top: 0;
+  right: 7px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
 #game-dino {
@@ -26,21 +34,43 @@ body {
   background: url('assets/player.png') no-repeat center/contain;
 }
 
-#game-obstacle {
+.game-obstacle {
   position: absolute;
   bottom: 10px;
-  right: 0;
+  right: -50px; 
   width: 50px;
   height: 50px;
   background: url('assets/cactus.png') no-repeat center/contain;
-  animation: moveObstacle 2s linear infinite;
+  animation: moveObstacle 4s linear infinite;
+}
+
+.game-obstacle2 {
+  position: absolute;
+  bottom: 10px;
+  right: -50px; 
+  width: 50px;
+  height: 50px;
+  background: url('https://w7.pngwing.com/pngs/775/691/png-transparent-pixel-art-animated-film-ghost-ghost-thumbnail.png') no-repeat center/contain;
+  animation: moveObstacle 4s linear infinite;
+  animation-delay: 2s; 
 }
 
 @keyframes moveObstacle {
   from {
-    right: 0;
+    right: -50px; 
   }
   to {
-    right: 100vw;
+    right: 800px; 
   }
+}
+
+button{
+  border: none;
+  border-radius; 30px;
+  background: #000;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  font-size: 50px;
+  margin: 0 auto;
 }

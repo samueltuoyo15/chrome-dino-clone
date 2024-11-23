@@ -10,9 +10,11 @@
 </head>
 <body>
   <section id="game-container">
+     <div id="score-board">HIGH SCORE <span id="score"></span></div>
+     <div id="game-over" style="display: none; text-align: center; font-size: 70px;">GAME OVER <br/> <button onclick="window.location.reload()">Restart</button></div>
     <div id="game-dino"></div>
-    <div id="game-obstacle"></div>
-    <div id="game-obstacle" class="obstacle2"></div>
+    <div class="game-obstacle"></div>
+    <div class="game-obstacle game-obstacle2"></div>
   </section>
   <script src="index.js" type="module"></script>
 </body>
